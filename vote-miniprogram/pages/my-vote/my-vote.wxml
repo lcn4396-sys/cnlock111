@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="tabs">
+    <view class="tab {{tab === 'created' ? 'active' : ''}}" bindtap="switchTab" data-tab="created">我创建的</view>
+    <view class="tab {{tab === 'joined' ? 'active' : ''}}" bindtap="switchTab" data-tab="joined">我参与的</view>
+  </view>
+  <view class="list" wx:if="{{tab === 'created'}}">
+    <vote-card wx:for="{{createdList}}" wx:key="id" item="{{item}}" bindtap="onVoteTap" />
+    <view wx:if="{{!loading && createdList.length === 0}}" class="empty">暂无创建的投票</view>
+  </view>
+  <view class="list" wx:if="{{tab === 'joined'}}">
+    <vote-card wx:for="{{joinedList}}" wx:key="id" item="{{item}}" bindtap="onVoteTap" />
+    <view wx:if="{{!loading && joinedList.length === 0}}" class="empty">暂无参与的投票</view>
+  </view>
+  <view wx:if="{{loading}}" class="loading">加载中…</view>
+</view>

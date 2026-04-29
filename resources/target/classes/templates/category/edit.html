@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2" id="categoryEditTitle">分类编辑</h1>
+            <div class="card">
+                <div class="card-body">
+                    <input type="hidden" id="categoryId" value="">
+                    <form id="categoryForm">
+                        <div class="mb-3"><label class="form-label">分类名称 <span class="text-danger">*</span></label><input type="text" class="form-control" id="categoryName" name="name" placeholder="分类名称" required/></div>
+                        <div class="mb-3"><label class="form-label">描述</label><textarea class="form-control" id="categoryDesc" name="description" rows="2" placeholder="选填"></textarea></div>
+                        <div class="mb-3"><label class="form-label">排序号</label><input type="number" class="form-control" id="categorySort" name="sortOrder" value="0"/></div>
+                        <div class="mb-3"><label class="form-label">状态</label><select class="form-select" id="categoryStatus" name="status"><option value="1">启用</option><option value="0">禁用</option></select></div>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a href="/category/list" class="btn btn-secondary">返回</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/category-edit.js}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+# 在线投票评选系统 - 后台管理系统
+spring:
+  application:
+    name: vote-admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/hall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 日志
+logging:
+  level:
+    root: INFO
+    com.example.vote: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger - %msg%n"

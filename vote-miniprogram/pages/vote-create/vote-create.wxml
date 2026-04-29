@@ -1,0 +1,70 @@
+<view class="page">
+  <view class="form">
+    <view class="field">
+      <view class="field-label">投票标题 <text class="required">*</text></view>
+      <input class="input" placeholder="请输入投票标题，如：年度优秀员工评选" value="{{title}}" maxlength="128" bindinput="onTitleInput" />
+      <view class="field-hint">最多128字</view>
+    </view>
+    <view class="field">
+      <view class="field-label">投票描述</view>
+      <textarea class="input textarea" placeholder="选填，简要描述投票规则或说明" value="{{desc}}" maxlength="2000" bindinput="onDescInput" />
+      <view class="field-hint">最多2000字</view>
+    </view>
+    <view class="field">
+      <view class="field-label">投票封面图</view>
+      <view class="cover-upload {{uploadingCover ? 'disabled' : ''}}" bindtap="onChooseCover">
+        {{uploadingCover ? '上传中...' : (coverImage ? '更换图片' : '+ 上传图片')}}
+      </view>
+      <image wx:if="{{coverImage}}" class="cover-preview" src="{{coverImage}}" mode="aspectFill" />
+      <view wx:if="{{coverImage}}" class="cover-remove" bindtap="onRemoveCover">删除图片</view>
+      <view class="field-hint">选填，上传后将在参与投票页顶部展示</view>
+    </view>
+    <view class="field">
+      <view class="field-label">投票分类 <text class="required">*</text></view>
+      <picker class="limit-picker" mode="selector" range="{{categoryList}}" range-key="name" value="{{categoryIndex}}" bindchange="onCategoryChange">
+        <view class="input picker-value {{categoryIndex >= 0 && categoryList.length ? '' : 'placeholder'}}">{{categoryList[categoryIndex] ? categoryList[categoryIndex].name : '请选择分类'}}</view>
+      </picker>
+      <view class="field-hint">选择后投票将归入该分类，便于在列表中筛选</view>
+    </view>
+    <view class="time-row">
+      <view class="time-label">开始时间</view>
+      <view class="row">
+        <picker class="picker-half picker-touch" mode="date" value="{{startDate}}" start="{{minDate}}" end="{{maxDate}}" bindchange="onStartDateChange">
+          <view class="input half picker-value {{startDate ? '' : 'placeholder'}}">{{startDate || '选择日期'}}</view>
+        </picker>
+        <picker class="picker-half picker-touch" mode="time" value="{{startTimePart}}" bindchange="onStartTimePartChange">
+          <view class="input half picker-value {{startTimePart ? '' : 'placeholder'}}">{{startTimePart || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="time-row">
+      <view class="time-label">结束时间</view>
+      <view class="row">
+        <picker class="picker-half picker-touch" mode="date" value="{{endDate}}" start="{{minDate}}" end="{{maxDate}}" bindchange="onEndDateChange">
+          <view class="input half picker-value {{endDate ? '' : 'placeholder'}}">{{endDate || '选择日期'}}</view>
+        </picker>
+        <picker class="picker-half picker-touch" mode="time" value="{{endTimePart}}" bindchange="onEndTimePartChange">
+          <view class="input half picker-value {{endTimePart ? '' : 'placeholder'}}">{{endTimePart || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="field">
+      <view class="field-label">每人最多可选几项</view>
+      <picker class="limit-picker" mode="selector" range="{{limitOptions}}" range-key="label" value="{{limitIndex}}" bindchange="onLimitChange">
+        <view class="input picker-value {{limitIndex >= 0 ? '' : 'placeholder'}}">{{limitOptions[limitIndex] ? limitOptions[limitIndex].label : '请选择'}}</view>
+      </picker>
+      <view class="field-hint">1=单选，2及以上=多选</view>
+    </view>
+    <view class="field">
+      <view class="field-label">投票选项 <text class="required">*</text></view>
+      <view class="field-hint opt-hint">至少2个，可点击下方“添加选项”增加</view>
+      <view class="option" wx:for="{{options}}" wx:key="index">
+        <text class="radio">{{index + 1}}.</text>
+        <input class="input flex" placeholder="请输入选项内容" value="{{item}}" maxlength="256" bindinput="onOptionInput" data-index="{{index}}" />
+        <view class="opt-del" wx:if="{{options.length > 2}}" data-index="{{index}}" catchtap="onRemoveOption">删除</view>
+      </view>
+      <view class="add-opt" bindtap="onAddOption">+ 添加选项</view>
+    </view>
+    <view class="btn" bindtap="onSubmit">确定</view>
+  </view>
+</view>

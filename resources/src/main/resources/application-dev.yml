@@ -1,0 +1,7 @@
+# 开发环境（可选）
+spring:
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com.example.vote: DEBUG

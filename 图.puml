@@ -1,0 +1,127 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+title 基于 Spring Boot 的在线投票评选系统 — 用例图
+
+actor "访客" as Guest
+actor "注册用户\n(小程序)" as MiniUser
+actor "系统管理员" as Admin
+
+MiniUser -|> Guest
+
+rectangle "在线投票评选系统" {
+  together {
+    package "小程序端 · 浏览与投票" {
+      usecase "浏览轮播图" as UC_Banner
+      usecase "浏览分类列表" as UC_Cat
+      usecase "浏览投票列表" as UC_VoteList
+      usecase "查看投票详情" as UC_VoteDetail
+      usecase "查看投票结果与排行榜" as UC_Result
+      usecase "提交投票" as UC_Submit
+      usecase "获取分享信息" as UC_Share
+      usecase "浏览评论列表" as UC_CommentList
+      usecase "查看投票封面图" as UC_Cover
+    }
+    package "小程序端 · 账户" {
+      usecase "微信登录" as UC_WxLogin
+      usecase "手机号登录" as UC_PhoneLogin
+      usecase "查看个人信息" as UC_Profile
+      usecase "编辑个人信息" as UC_ProfileEdit
+      usecase "修改登录密码" as UC_Pwd
+      usecase "退出登录" as UC_Logout
+    }
+    package "小程序端 · 创作与互动" {
+      usecase "创建投票" as UC_CreateVote
+      usecase "上传投票封面" as UC_UploadCover
+      usecase "查看我创建的投票" as UC_MyCreated
+      usecase "查看我参与的投票" as UC_MyJoined
+      usecase "发表评论" as UC_CommentCreate
+      usecase "删除自己的评论" as UC_CommentDel
+      usecase "评论点赞/取消点赞" as UC_CommentLike
+      usecase "提交举报或投诉" as UC_Report
+      usecase "查看我的操作汇总" as UC_MyActions
+      usecase "查看我的评论列表" as UC_MyComments
+      usecase "查看我的举报列表" as UC_MyReports
+    }
+  }
+
+  package "管理端" {
+    usecase "数据统计概览" as AD_Stat
+    usecase "数据导出(占位)" as AD_Export
+    usecase "投票列表与搜索" as AD_VoteList
+    usecase "查看投票详情(含选项统计)" as AD_VoteDetail
+    usecase "后台新增投票" as AD_VoteCreate
+    usecase "编辑投票" as AD_VoteEdit
+    usecase "删除投票" as AD_VoteDel
+    usecase "修改投票状态" as AD_VoteStatus
+    usecase "分类列表与维护" as AD_Category
+    usecase "用户列表与详情" as AD_UserList
+    usecase "启用禁用用户" as AD_UserStatus
+    usecase "重置用户密码" as AD_UserPwd
+    usecase "编辑用户信息" as AD_UserEdit
+    usecase "评论列表与审核" as AD_CmtManage
+    usecase "删除评论" as AD_CmtDel
+    usecase "举报列表与处理" as AD_RptManage
+    usecase "角色管理与分配权限(占位)" as AD_Role
+    usecase "读取与保存系统设置" as AD_Setting
+    usecase "查看操作日志" as AD_Log
+    usecase "管理员个人信息与改密" as AD_AdminProfile
+  }
+}
+
+' ---------- 访客 ----------
+Guest --> UC_Banner
+Guest --> UC_Cat
+Guest --> UC_VoteList
+Guest --> UC_VoteDetail
+Guest --> UC_Result
+Guest --> UC_Submit
+Guest --> UC_Share
+Guest --> UC_CommentList
+Guest --> UC_Cover
+
+' ---------- 注册用户（含登录后能力）----------
+MiniUser --> UC_WxLogin
+MiniUser --> UC_PhoneLogin
+MiniUser --> UC_Profile
+MiniUser --> UC_ProfileEdit
+MiniUser --> UC_Pwd
+MiniUser --> UC_Logout
+MiniUser --> UC_CreateVote
+MiniUser --> UC_UploadCover
+MiniUser --> UC_MyCreated
+MiniUser --> UC_MyJoined
+MiniUser --> UC_CommentCreate
+MiniUser --> UC_CommentDel
+MiniUser --> UC_CommentLike
+MiniUser --> UC_Report
+MiniUser --> UC_MyActions
+MiniUser --> UC_MyComments
+MiniUser --> UC_MyReports
+
+' ---------- 管理员 ----------
+Admin --> AD_Stat
+Admin --> AD_Export
+Admin --> AD_VoteList
+Admin --> AD_VoteDetail
+Admin --> AD_VoteCreate
+Admin --> AD_VoteEdit
+Admin --> AD_VoteDel
+Admin --> AD_VoteStatus
+Admin --> AD_Category
+Admin --> AD_UserList
+Admin --> AD_UserStatus
+Admin --> AD_UserPwd
+Admin --> AD_UserEdit
+Admin --> AD_CmtManage
+Admin --> AD_CmtDel
+Admin --> AD_RptManage
+Admin --> AD_Role
+Admin --> AD_Setting
+Admin --> AD_Log
+Admin --> AD_AdminProfile
+
+@enduml

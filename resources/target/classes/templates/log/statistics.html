@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">数据统计</h1>
+            <p class="text-muted">注册用户数、投票参与数、活跃度、投票排行等。</p>
+            <div class="card">
+                <div class="card-body">
+                    <p id="statisticsError" class="text-danger small" style="display:none;"></p>
+                    <div class="row mb-3" id="statisticsCards">
+                        <div class="col-md-3"><div class="card bg-light"><div class="card-body text-center"><h5>用户数</h5><p class="mb-0" id="statUserCount">-</p></div></div></div>
+                        <div class="col-md-3"><div class="card bg-light"><div class="card-body text-center"><h5>投票数</h5><p class="mb-0" id="statVoteCount">-</p></div></div></div>
+                        <div class="col-md-3"><div class="card bg-light"><div class="card-body text-center"><h5>评论数</h5><p class="mb-0" id="statCommentCount">-</p></div></div></div>
+                        <div class="col-md-3"><div class="card bg-light"><div class="card-body text-center"><h5>举报数</h5><p class="mb-0" id="statReportCount">-</p></div></div></div>
+                    </div>
+                    <div id="chartStatistics" style="height:300px;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/statistics.js}"></script>
+</body>
+</html>

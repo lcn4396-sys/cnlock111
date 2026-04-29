@@ -1,0 +1,229 @@
+================================================================================
+在线投票评选系统 — 用例图（文本/PUML/Mermaid）
+================================================================================
+说明：
+  • PlantUML（推荐）：直接打开同目录下的「图.puml」用 VS Code PlantUML / IDEA 插件预览，避免在线框或插件「自动补一行 @startuml」时再整段粘贴导致第二行出现多余的 startuml 而报错。
+  • 若坚持复制到网站或空白编辑区：只复制「@startuml」至「@enduml」整段（勿含上下分隔线）；首行必须是单独的 @startuml；禁止出现第二行仅为 startuml（无 @）——那是重复指令。标题请用下面 title 行，勿写在 @startuml 同一行。可用 https://www.plantuml.com/plantuml 渲染。
+  • Mermaid：下方为 flowchart（兼容性好）；请勿使用已删除的 usecaseDiagram（旧环境会报 UnknownDiagramError）。预览时一般用 ```mermaid 围栏只包一段图，勿重复粘贴。
+  • 参与者、用例依据 vote-backend 中 Controller 功能梳理（小程序端 /api/mini，管理端 /api/admin）。
+================================================================================
+
+【参与者】
+  • 访客：未登录即可访问的公开接口（轮播、分类、投票列表/详情、结果、提交投票、评论列表等）。
+  • 注册用户（小程序）：微信/手机号登录后的用户；继承访客可用能力（UML 泛化）。
+  • 系统管理员：后台管理（统计、投票/分类/用户/评论/举报、角色、设置、日志、管理员资料等）。
+
+--------------------------------------------------------------------------------
+PlantUML
+--------------------------------------------------------------------------------
+
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+title 基于 Spring Boot 的在线投票评选系统 — 用例图
+
+actor "访客" as Guest
+actor "注册用户\n(小程序)" as MiniUser
+actor "系统管理员" as Admin
+
+MiniUser -|> Guest
+
+rectangle "在线投票评选系统" {
+  together {
+    package "小程序端 · 浏览与投票" {
+      usecase "浏览轮播图" as UC_Banner
+      usecase "浏览分类列表" as UC_Cat
+      usecase "浏览投票列表" as UC_VoteList
+      usecase "查看投票详情" as UC_VoteDetail
+      usecase "查看投票结果与排行榜" as UC_Result
+      usecase "提交投票" as UC_Submit
+      usecase "获取分享信息" as UC_Share
+      usecase "浏览评论列表" as UC_CommentList
+      usecase "查看投票封面图" as UC_Cover
+    }
+    package "小程序端 · 账户" {
+      usecase "微信登录" as UC_WxLogin
+      usecase "手机号登录" as UC_PhoneLogin
+      usecase "查看个人信息" as UC_Profile
+      usecase "编辑个人信息" as UC_ProfileEdit
+      usecase "修改登录密码" as UC_Pwd
+      usecase "退出登录" as UC_Logout
+    }
+    package "小程序端 · 创作与互动" {
+      usecase "创建投票" as UC_CreateVote
+      usecase "上传投票封面" as UC_UploadCover
+      usecase "查看我创建的投票" as UC_MyCreated
+      usecase "查看我参与的投票" as UC_MyJoined
+      usecase "发表评论" as UC_CommentCreate
+      usecase "删除自己的评论" as UC_CommentDel
+      usecase "评论点赞/取消点赞" as UC_CommentLike
+      usecase "提交举报或投诉" as UC_Report
+      usecase "查看我的操作汇总" as UC_MyActions
+      usecase "查看我的评论列表" as UC_MyComments
+      usecase "查看我的举报列表" as UC_MyReports
+    }
+  }
+
+  package "管理端" {
+    usecase "数据统计概览" as AD_Stat
+    usecase "数据导出(占位)" as AD_Export
+    usecase "投票列表与搜索" as AD_VoteList
+    usecase "查看投票详情(含选项统计)" as AD_VoteDetail
+    usecase "后台新增投票" as AD_VoteCreate
+    usecase "编辑投票" as AD_VoteEdit
+    usecase "删除投票" as AD_VoteDel
+    usecase "修改投票状态" as AD_VoteStatus
+    usecase "分类列表与维护" as AD_Category
+    usecase "用户列表与详情" as AD_UserList
+    usecase "启用禁用用户" as AD_UserStatus
+    usecase "重置用户密码" as AD_UserPwd
+    usecase "编辑用户信息" as AD_UserEdit
+    usecase "评论列表与审核" as AD_CmtManage
+    usecase "删除评论" as AD_CmtDel
+    usecase "举报列表与处理" as AD_RptManage
+    usecase "角色管理与分配权限(占位)" as AD_Role
+    usecase "读取与保存系统设置" as AD_Setting
+    usecase "查看操作日志" as AD_Log
+    usecase "管理员个人信息与改密" as AD_AdminProfile
+  }
+}
+
+' ---------- 访客 ----------
+Guest --> UC_Banner
+Guest --> UC_Cat
+Guest --> UC_VoteList
+Guest --> UC_VoteDetail
+Guest --> UC_Result
+Guest --> UC_Submit
+Guest --> UC_Share
+Guest --> UC_CommentList
+Guest --> UC_Cover
+
+' ---------- 注册用户（含登录后能力）----------
+MiniUser --> UC_WxLogin
+MiniUser --> UC_PhoneLogin
+MiniUser --> UC_Profile
+MiniUser --> UC_ProfileEdit
+MiniUser --> UC_Pwd
+MiniUser --> UC_Logout
+MiniUser --> UC_CreateVote
+MiniUser --> UC_UploadCover
+MiniUser --> UC_MyCreated
+MiniUser --> UC_MyJoined
+MiniUser --> UC_CommentCreate
+MiniUser --> UC_CommentDel
+MiniUser --> UC_CommentLike
+MiniUser --> UC_Report
+MiniUser --> UC_MyActions
+MiniUser --> UC_MyComments
+MiniUser --> UC_MyReports
+
+' ---------- 管理员 ----------
+Admin --> AD_Stat
+Admin --> AD_Export
+Admin --> AD_VoteList
+Admin --> AD_VoteDetail
+Admin --> AD_VoteCreate
+Admin --> AD_VoteEdit
+Admin --> AD_VoteDel
+Admin --> AD_VoteStatus
+Admin --> AD_Category
+Admin --> AD_UserList
+Admin --> AD_UserStatus
+Admin --> AD_UserPwd
+Admin --> AD_UserEdit
+Admin --> AD_CmtManage
+Admin --> AD_CmtDel
+Admin --> AD_RptManage
+Admin --> AD_Role
+Admin --> AD_Setting
+Admin --> AD_Log
+Admin --> AD_AdminProfile
+
+@enduml
+
+--------------------------------------------------------------------------------
+Mermaid（flowchart — 兼容常见编辑器 / 旧版 Mermaid）
+--------------------------------------------------------------------------------
+用法：整段复制到支持 Mermaid 的环境时，外层通常需要 markdown 围栏，例如：
+  ```mermaid
+  （下面从 flowchart 起到最后一行）
+  ```
+说明：
+  • 勿把下面内容粘贴两次；勿与 PlantUML 段混在一起。
+  • 旧版「usecaseDiagram」在部分工具中会报 UnknownDiagramError，故改用 flowchart；（圆角矩形表示参与者，双圆表示用例）。
+
+flowchart LR
+  Guest(["访客"])
+  MiniUser(["注册用户(小程序)"])
+  Admin(["系统管理员"])
+
+  subgraph Mini["小程序端"]
+    direction TB
+    U1((浏览轮播图))
+    U2((浏览分类))
+    U3((浏览投票列表))
+    U4((查看投票详情))
+    U5((查看结果与排行))
+    U6((提交投票))
+    U7((分享信息))
+    U8((浏览评论列表))
+    U9((查看封面图))
+    U10((微信登录))
+    U11((手机号登录))
+    U12((个人中心与改密))
+    U13((创建投票与上传封面))
+    U14((我创建/参与的投票))
+    U15((评论发表删改与点赞))
+    U16((举报投诉))
+    U17((我的汇总与列表))
+  end
+
+  subgraph Back["管理端"]
+    direction TB
+    A1((统计与导出))
+    A2((投票全流程管理))
+    A3((分类管理))
+    A4((用户管理))
+    A5((评论管理))
+    A6((举报处理))
+    A7((角色权限))
+    A8((系统设置))
+    A9((操作日志))
+    A10((管理员资料))
+  end
+
+  Guest --> U1
+  Guest --> U2
+  Guest --> U3
+  Guest --> U4
+  Guest --> U5
+  Guest --> U6
+  Guest --> U7
+  Guest --> U8
+  Guest --> U9
+  MiniUser --> U10
+  MiniUser --> U11
+  MiniUser --> U12
+  MiniUser --> U13
+  MiniUser --> U14
+  MiniUser --> U15
+  MiniUser --> U16
+  MiniUser --> U17
+  Admin --> A1
+  Admin --> A2
+  Admin --> A3
+  Admin --> A4
+  Admin --> A5
+  Admin --> A6
+  Admin --> A7
+  Admin --> A8
+  Admin --> A9
+  Admin --> A10
+
+================================================================================
+（完）
+================================================================================

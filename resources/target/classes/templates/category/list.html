@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">分类列表</h1>
+            <p class="text-muted">投票分类，支持新增、编辑、删除、排序。</p>
+            <div class="card">
+                <div class="card-body">
+                    <a href="/category/edit" class="btn btn-primary mb-3">新增分类</a>
+                    <p id="categoryListError" class="text-danger small" style="display:none;"></p>
+                    <table class="table table-hover">
+                        <thead><tr><th>名称</th><th>描述</th><th>排序</th><th>状态</th><th>操作</th></tr></thead>
+                        <tbody id="categoryListBody"><tr><td colspan="5" class="text-center text-muted">加载中...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/category-list.js}"></script>
+</body>
+</html>

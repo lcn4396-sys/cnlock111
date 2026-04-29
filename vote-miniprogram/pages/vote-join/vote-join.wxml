@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="form">
+    <view class="head">
+      <image class="cover" src="{{detail.coverImage || '/images/icon-default.svg'}}" mode="aspectFill" />
+      <text class="title">{{detail.title}}</text>
+    </view>
+    <view class="opt-title">请选择 <text class="opt-hint" wx:if="{{limitPerUser > 1}}">（最多选{{limitPerUser}}项）</text></view>
+    <view class="option {{item.selected ? 'active' : ''}}" wx:for="{{options}}" wx:key="id" data-id="{{item.id}}" bindtap="onSelectOption">
+      <text class="check">{{item.selected ? '☑' : '□'}}</text>
+      <text class="opt-text">{{item.optionTitle}}</text>
+    </view>
+    <view class="btn" bindtap="onSubmit">确定</view>
+  </view>
+</view>

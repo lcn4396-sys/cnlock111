@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vote-card": "/components/vote-card/vote-card"
+  },
+  "navigationBarTitleText": "我的投票"
+}

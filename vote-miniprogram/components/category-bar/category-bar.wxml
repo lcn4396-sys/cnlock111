@@ -1,0 +1,5 @@
+<scroll-view scroll-x class="category-bar">
+  <view class="category-item {{selectedId === item.id ? 'active' : ''}}" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="onSelect">
+    {{item.name}}
+  </view>
+</scroll-view>

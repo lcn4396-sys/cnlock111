@@ -1,0 +1,10 @@
+<view class="comment-item">
+  <text class="comment-content">{{item.content}}</text>
+  <view class="comment-meta">
+    <text class="comment-time">{{item.createTimeStr || item.createTime || ''}}</text>
+    <view class="comment-like-wrap" data-id="{{item.id}}" bindtap="onLike">
+      <text class="icon-like {{item.liked ? 'liked' : ''}}">{{item.liked ? '♥' : '♡'}}</text>
+      <text class="comment-like-num">{{item.likeCount || 0}}</text>
+    </view>
+  </view>
+</view>

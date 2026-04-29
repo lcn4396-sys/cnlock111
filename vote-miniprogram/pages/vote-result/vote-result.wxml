@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="result-head">
+    <image class="cover" src="{{coverImageSrc || '/images/icon-default.svg'}}" mode="aspectFill" />
+    <text class="title">{{detail.title}}</text>
+  </view>
+  <view class="result-list">
+    <view class="result-item" wx:for="{{options}}" wx:key="id">
+      <text class="opt-title">{{item.optionTitle}}</text>
+      <text class="opt-count">得票 {{item.voteCount || 0}}</text>
+    </view>
+  </view>
+  <view class="btn" bindtap="onConfirm">确定</view>
+</view>

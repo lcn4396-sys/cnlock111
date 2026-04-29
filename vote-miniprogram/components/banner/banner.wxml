@@ -1,0 +1,10 @@
+<swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="4000" circular="{{true}}">
+  <swiper-item wx:for="{{list}}" wx:key="id">
+    <image class="banner-img" src="{{item.imageUrl || '/images/icon-default.svg'}}" mode="aspectFill" data-url="{{item.linkUrl}}" bindtap="onTap" />
+  </swiper-item>
+  <block wx:if="{{list.length === 0}}">
+    <swiper-item>
+      <image class="banner-img" src="/images/banner-vote.png" mode="aspectFill" />
+    </swiper-item>
+  </block>
+</swiper>

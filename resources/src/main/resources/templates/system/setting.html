@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">平台通用设置</h1>
+            <p class="text-muted">系统公告等键值配置，保存后即时生效。</p>
+            <div class="card">
+                <div class="card-body">
+                    <p id="settingError" class="text-danger small" style="display:none;"></p>
+                    <form id="settingForm">
+                        <div class="mb-3"><label class="form-label">系统公告</label><textarea class="form-control" id="settingNotice" name="notice" rows="3" placeholder="展示给用户的系统公告"></textarea></div>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/setting.js}"></script>
+</body>
+</html>

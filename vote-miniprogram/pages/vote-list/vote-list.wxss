@@ -1,0 +1,6 @@
+.page { min-height: 100vh; background: #f5f5f5; }
+.nav-back { display: flex; align-items: center; padding: 24rpx 24rpx 16rpx; background: #fff; }
+.nav-back-icon { font-size: 40rpx; color: #07c160; margin-right: 8rpx; }
+.nav-back-text { font-size: 30rpx; color: #07c160; }
+.list-scroll { height: calc(100vh - 180rpx); padding: 16rpx; }
+.loading, .empty { text-align: center; padding: 40rpx; color: #999; }

@@ -1,0 +1,8 @@
+.comment-item { padding: 24rpx; background: #f9f9f9; margin-bottom: 16rpx; border-radius: 8rpx; }
+.comment-content { font-size: 28rpx; color: #333; display: block; line-height: 1.5; }
+.comment-meta { font-size: 24rpx; color: #999; margin-top: 12rpx; display: flex; align-items: center; gap: 24rpx; }
+.comment-time { }
+.comment-like-wrap { display: flex; align-items: center; gap: 8rpx; padding: 8rpx 16rpx; min-height: 48rpx; }
+.icon-like { font-size: 28rpx; color: #999; }
+.icon-like.liked { color: #ee0a24; }
+.comment-like-num { font-size: 24rpx; color: #999; }

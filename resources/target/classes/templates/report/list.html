@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">举报投诉列表</h1>
+            <p class="text-muted">举报与投诉记录，支持筛选、处理。</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-2">
+                        <label>状态筛选：</label>
+                        <select id="reportStatusFilter" class="form-select form-select-sm d-inline-block w-auto">
+                            <option value="">全部</option>
+                            <option value="0">待处理</option>
+                            <option value="1">已处理</option>
+                        </select>
+                    </div>
+                    <p id="reportListError" class="text-danger small" style="display:none;"></p>
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>类型</th><th>目标</th><th>举报人</th><th>内容</th><th>状态</th><th>时间</th><th>操作</th></tr></thead>
+                        <tbody id="reportListBody"><tr><td colspan="8" class="text-center text-muted">加载中...</td></tr></tbody>
+                    </table>
+                    <nav id="reportListPager" class="mt-2" aria-label="分页" style="display:none;"></nav>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/report-list.js}"></script>
+</body>
+</html>

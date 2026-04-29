@@ -1,0 +1,8 @@
+<view class="vote-card" bindtap="onTap">
+  <image class="vote-cover" src="{{item.coverImage || '/images/icon-default.svg'}}" mode="aspectFill" />
+  <view class="vote-info">
+    <text class="vote-title">{{item.title}}</text>
+    <text class="vote-meta">参与 {{item.participantCount || 0}} 人</text>
+  </view>
+  <image class="vote-arrow" src="/images/icon-arrow.svg" mode="aspectFit" />
+</view>

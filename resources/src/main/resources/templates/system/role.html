@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">权限与角色管理</h1>
+            <p class="text-muted">角色维护、分配后台菜单与操作权限。</p>
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary mb-3" id="btnRoleAdd">新增角色</button>
+                    <p id="roleListError" class="text-danger small" style="display:none;"></p>
+                    <table class="table table-hover">
+                        <thead><tr><th>角色名称</th><th>角色编码</th><th>描述</th><th>状态</th><th>操作</th></tr></thead>
+                        <tbody id="roleListBody"><tr><td colspan="5" class="text-center text-muted">加载中...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- 新增/编辑角色 模态框 -->
+<div class="modal fade" id="roleFormModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleFormModalTitle">新增角色</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="roleFormId" value="">
+                <div class="mb-3">
+                    <label class="form-label">角色名称 <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="roleFormName" placeholder="如：管理员" maxlength="64" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">角色编码 <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="roleFormCode" placeholder="如：ADMIN" maxlength="64" required>
+                    <small class="text-muted">编辑时不可修改</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">描述</label>
+                    <input type="text" class="form-control" id="roleFormDesc" placeholder="角色说明" maxlength="256">
+                </div>
+                <div class="mb-3" id="roleFormStatusWrap">
+                    <label class="form-label">状态</label>
+                    <select class="form-select" id="roleFormStatus">
+                        <option value="1">启用</option>
+                        <option value="0">禁用</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="roleFormSubmit">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/role.js}"></script>
+</body>
+</html>

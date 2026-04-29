@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<header th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/vote/list">投票管理后台</a>
+        <div class="d-flex">
+            <span class="navbar-text text-white me-3" th:if="${#request.remoteUser != null}" th:text="${#request.remoteUser}">admin</span>
+            <form th:if="${#request.remoteUser != null}" th:action="@{/logout}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-outline-light btn-sm">退出</button>
+            </form>
+        </div>
+    </div>
+</header>
+</body>
+</html>

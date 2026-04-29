@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com.example.vote: DEBUG
+
+# 开发环境改用 8082，避免与已占用 8081 的进程冲突
+server:
+  port: 8082

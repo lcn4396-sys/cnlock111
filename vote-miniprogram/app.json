@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/vote-list/vote-list",
+    "pages/vote-detail/vote-detail",
+    "pages/vote-result/vote-result",
+    "pages/vote-create/vote-create",
+    "pages/vote-join/vote-join",
+    "pages/vote-share/vote-share",
+    "pages/my/my",
+    "pages/my-vote/my-vote",
+    "pages/my-comment/my-comment",
+    "pages/my-report/my-report",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "在线投票",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/vote-list/vote-list",
+        "text": "投票",
+        "iconPath": "images/tab-vote.png",
+        "selectedIconPath": "images/tab-vote-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tab-my.png",
+        "selectedIconPath": "images/tab-my-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

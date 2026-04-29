@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "banner": "/components/banner/banner",
+    "category-bar": "/components/category-bar/category-bar",
+    "modal-create-vote": "/components/modal-create-vote/modal-create-vote"
+  },
+  "navigationBarTitleText": "首页"
+}

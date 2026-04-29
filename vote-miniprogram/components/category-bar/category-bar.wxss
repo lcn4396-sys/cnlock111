@@ -1,0 +1,3 @@
+.category-bar { white-space: nowrap; padding: 20rpx 0; }
+.category-item { display: inline-block; padding: 12rpx 28rpx; margin-right: 16rpx; background: #f0f0f0; border-radius: 32rpx; font-size: 26rpx; }
+.category-item.active { background: #07c160; color: #fff; }

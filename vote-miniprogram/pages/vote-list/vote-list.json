@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "vote-card": "/components/vote-card/vote-card",
+    "category-bar": "/components/category-bar/category-bar"
+  },
+  "navigationBarTitleText": "投票列表"
+}

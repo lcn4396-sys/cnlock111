@@ -1,0 +1,36 @@
+<view class="page">
+  <!-- 举报弹窗 -->
+  <view class="report-mask" wx:if="{{reportModalVisible}}" bindtap="onCloseReportModal"></view>
+  <view class="report-modal" wx:if="{{reportModalVisible}}" catchtap="onBoxTapReport">
+    <view class="report-modal-title">举报该投票</view>
+    <textarea class="report-modal-input" placeholder="请填写举报原因（必填）" value="{{reportContent}}" maxlength="2000" bindinput="onReportContentInput" />
+    <view class="report-modal-actions">
+      <view class="report-modal-btn cancel" bindtap="onCloseReportModal">取消</view>
+      <view class="report-modal-btn submit" bindtap="onSubmitReport">提交举报</view>
+    </view>
+  </view>
+  <view class="detail-head">
+    <image class="cover" src="{{detail.coverImage || '/images/icon-default.svg'}}" mode="aspectFill" />
+    <text class="title">{{detail.title}}</text>
+    <text class="desc">{{detail.description}}</text>
+  </view>
+  <view class="actions">
+    <view class="btn" bindtap="onViewResult">查看结果</view>
+    <view class="btn" bindtap="onJoin">参与投票</view>
+    <view class="btn" bindtap="onShare">投票分享</view>
+    <view class="btn" bindtap="onReport">投票举报</view>
+  </view>
+  <view class="section comment-section">
+    <text>投票评论</text>
+    <text class="comment-count" wx:if="{{comments.length > 0}}">共 {{comments.length}} 条</text>
+  </view>
+  <view class="comment-input-wrap">
+    <textarea class="comment-input" placeholder="写一条评论…" value="{{commentContent}}" maxlength="2000" bindinput="onCommentInput" />
+    <view class="comment-send {{commentContent && commentContent.trim() ? '' : 'disabled'}}" bindtap="onSendComment">发送</view>
+  </view>
+  <view class="comment-list">
+    <view wx:for="{{comments}}" wx:key="id"><comment-item item="{{item}}" bindlike="onCommentLike" /></view>
+  </view>
+  <view wx:if="{{!commentLoading && comments.length === 0}}" class="empty">暂无评论，快来抢沙发</view>
+  <view wx:if="{{commentLoading}}" class="empty">加载中…</view>
+</view>

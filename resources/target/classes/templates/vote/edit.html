@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2" id="voteEditTitle">投票编辑</h1>
+            <p class="text-muted">新建或编辑投票基本信息、候选项（新建时必填）。</p>
+            <div class="card">
+                <div class="card-body">
+                    <p id="voteEditError" class="text-danger small" style="display:none;"></p>
+                    <input type="hidden" id="voteId" value="">
+                    <form id="voteForm">
+                        <div class="mb-3"><label class="form-label">标题 <span class="text-danger">*</span></label><input type="text" class="form-control" id="voteTitle" name="title" placeholder="投票标题" required/></div>
+                        <div class="mb-3"><label class="form-label">描述</label><textarea class="form-control" id="voteDesc" name="description" rows="3" placeholder="选填"></textarea></div>
+                        <div class="mb-3"><label class="form-label">封面图URL</label><input type="text" class="form-control" id="voteCover" name="coverImage" placeholder="选填"/></div>
+                        <div class="mb-3"><label class="form-label">分类</label><select class="form-select" id="voteCategoryId" name="categoryId"><option value="">请选择</option></select></div>
+                        <div class="mb-3" id="voteOptionsWrap"><label class="form-label">选项（每行一个，新建时必填）</label><textarea class="form-control" id="voteOptionTitles" name="optionTitles" rows="4" placeholder="选项A&#10;选项B&#10;选项C"></textarea></div>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a href="/vote/list" class="btn btn-secondary">返回</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/vote-edit.js}"></script>
+</body>
+</html>

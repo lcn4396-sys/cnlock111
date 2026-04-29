@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">评论详情</h1>
+            <div class="card">
+                <div class="card-body">
+                    <p id="commentDetailError" class="text-danger small" style="display:none;"></p>
+                    <div id="commentDetailBox" style="display:none;">
+                        <p><strong>评论ID：</strong><span id="commentId"></span></p>
+                        <p><strong>投票ID：</strong><a href="/vote/detail?id=" id="commentVoteIdLink"></a></p>
+                        <p><strong>用户ID：</strong><span id="commentUserId"></span></p>
+                        <p><strong>内容：</strong><span id="commentContent"></span></p>
+                        <p><strong>点赞数：</strong><span id="commentLikeCount"></span></p>
+                        <p><strong>状态：</strong><span id="commentStatus"></span></p>
+                        <p><strong>创建时间：</strong><span id="commentCreateTime"></span></p>
+                        <button type="button" class="btn btn-success me-1" id="btnCommentPass">通过</button>
+                        <button type="button" class="btn btn-warning me-1" id="btnCommentReject">拒绝</button>
+                        <button type="button" class="btn btn-danger me-1" id="btnCommentDelete">删除</button>
+                    </div>
+                    <a href="/comment/list" class="btn btn-secondary">返回列表</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/comment-detail.js}"></script>
+</body>
+</html>

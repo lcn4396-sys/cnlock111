@@ -1,0 +1,20 @@
+/* 在线投票评选系统 - 管理后台 公共样式 */
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f8f9fa;
+}
+.sidebar {
+    min-height: calc(100vh - 56px);
+}
+.card {
+    border-radius: 0.25rem;
+}
+.table th {
+    font-weight: 600;
+}

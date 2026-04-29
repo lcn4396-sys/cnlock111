@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">操作日志</h1>
+            <p class="text-muted">管理员后台操作记录，支持筛选、查询。</p>
+            <div class="card">
+                <div class="card-body">
+                    <p id="logListError" class="text-danger small" style="display:none;"></p>
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>操作人</th><th>模块</th><th>操作</th><th>请求</th><th>时间</th><th>IP</th></tr></thead>
+                        <tbody id="logListBody"><tr><td colspan="7" class="text-center text-muted">加载中...</td></tr></tbody>
+                    </table>
+                    <nav id="logListPager" class="mt-2" aria-label="分页" style="display:none;"></nav>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/log-operate.js}"></script>
+</body>
+</html>

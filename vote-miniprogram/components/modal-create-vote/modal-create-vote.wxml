@@ -1,0 +1,9 @@
+<view class="modal-mask" wx:if="{{show}}" bindtap="onClose">
+  <view class="modal-box" catchtap="onBoxTap">
+    <view class="modal-title">创建投票</view>
+    <input class="modal-input" placeholder="投票标题" value="{{title}}" bindinput="onTitleInput" />
+    <input class="modal-input" placeholder="投票描述（选填）" value="{{desc}}" bindinput="onDescInput" />
+    <input class="modal-input" placeholder="备注（选填）" value="{{extra}}" bindinput="onExtraInput" />
+    <view class="modal-btn" bindtap="onSubmit">确定</view>
+  </view>
+</view>

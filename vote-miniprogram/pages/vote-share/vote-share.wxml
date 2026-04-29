@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="share-box">
+    <text class="share-title">{{detail.title || '投票分享'}}</text>
+    <text class="share-desc">{{detail.description || '点击右上角「…」将投票分享给好友或朋友圈'}}</text>
+  </view>
+  <view class="btn" bindtap="onShare">确定</view>
+</view>

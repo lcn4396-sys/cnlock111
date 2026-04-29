@@ -1,0 +1,6 @@
+.vote-card { display: flex; align-items: center; padding: 24rpx; background: #fff; margin-bottom: 16rpx; border-radius: 12rpx; }
+.vote-cover { width: 120rpx; height: 120rpx; border-radius: 8rpx; flex-shrink: 0; }
+.vote-info { flex: 1; margin-left: 24rpx; }
+.vote-title { font-size: 30rpx; display: block; }
+.vote-meta { font-size: 24rpx; color: #999; margin-top: 8rpx; }
+.vote-arrow { width: 24rpx; height: 24rpx; margin-left: 16rpx; }

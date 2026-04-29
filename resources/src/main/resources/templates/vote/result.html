@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}">
+</head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">投票结果</h1>
+            <p class="text-muted">各候选项得票数、占比，支持导出。</p>
+            <div id="voteResultSummary" class="card mb-3" style="display:none;">
+                <div class="card-body">
+                    <h5 id="voteResultTitle" class="card-title"></h5>
+                    <p class="card-text text-muted mb-0"><span id="voteResultParticipant">0</span> 人参与</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p id="voteResultLoadTip" class="text-muted">加载中...</p>
+                    <p id="voteResultError" class="text-danger small" style="display:none;"></p>
+                    <div id="chartResultBar" style="height:320px; display:none;"></div>
+                    <div id="chartResultPie" style="height:320px; display:none;"></div>
+                    <a href="/vote/list" class="btn btn-secondary mt-3">返回列表</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/vote-result.js}"></script>
+</body>
+</html>

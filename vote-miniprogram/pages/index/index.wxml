@@ -1,0 +1,22 @@
+<!-- 首页：顶部 首页 [···] [+] ，轮播、分类、创建投票、参与投票 -->
+<view class="page-index">
+  <view class="nav-bar">
+    <text class="nav-title">首页</text>
+    <image class="nav-icon" src="/images/icon-more.svg" mode="aspectFit" bindtap="onMore" />
+    <image class="nav-icon nav-add" src="/images/icon-add.svg" mode="aspectFit" bindtap="onShowCreate" />
+  </view>
+
+  <scroll-view scroll-y class="main-scroll">
+    <view class="banner-wrap">
+      <banner list="{{bannerList}}" bindtap="onBannerTap" />
+    </view>
+
+    <view class="section-title">分类列表</view>
+    <category-bar list="{{categoryList}}" selectedId="{{categoryId}}" bindselect="onCategorySelect" />
+
+    <view class="block-btn create-vote" bindtap="onShowCreate">创建投票</view>
+    <view class="block-btn join-vote" bindtap="onJoinVote">参与投票</view>
+  </scroll-view>
+
+  <modal-create-vote show="{{showCreateModal}}" bindclose="onCloseCreate" bindsubmit="onCreateSubmit" />
+</view>

@@ -1,0 +1,11 @@
+.page-index { min-height: 100vh; background: #f5f5f5; }
+.nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 24rpx 24rpx 16rpx; background: #fff; }
+.nav-icon { width: 44rpx; height: 44rpx; }
+.nav-add { margin-left: auto; margin-right: 16rpx; }
+.nav-title { font-size: 34rpx; font-weight: 500; }
+.main-scroll { height: calc(100vh - 100rpx); }
+.banner-wrap { margin: 16rpx; border-radius: 16rpx; overflow: hidden; background: #fff; }
+.section-title { padding: 24rpx 24rpx 0; font-size: 28rpx; color: #666; }
+.block-btn { margin: 24rpx; padding: 32rpx; min-height: 96rpx; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 16rpx; text-align: center; font-size: 30rpx; box-sizing: border-box; }
+.create-vote { margin-top: 16rpx; }
+.join-vote { }

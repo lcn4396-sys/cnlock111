@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">投票列表</h1>
+            <p class="text-muted">展示所有投票的基本信息，支持搜索、筛选、分页。</p>
+            <div class="card">
+                <div class="card-body">
+                    <a href="/vote/edit" class="btn btn-primary mb-3">新建投票</a>
+                    <table class="table table-hover">
+                        <thead><tr><th>标题</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead>
+                        <tbody id="voteListBody"><tr><td colspan="4" class="text-center text-muted">加载中...</td></tr></tbody>
+                    </table>
+                    <nav id="voteListPager" class="mt-2" aria-label="分页" style="display:none;"></nav>
+                    <p id="voteListError" class="text-danger small mt-2" style="display:none;"></p>
+                    <p id="voteListEmpty" class="text-muted small mt-2" style="display:none;">暂无数据</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/vote-list.js}"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/head :: head}"></head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{layout/sidebar :: sidebar}"></div>
+        <main class="col-md-10 ms-sm-auto px-4 py-3">
+            <h1 class="h2">用户详情</h1>
+            <p class="text-muted">用户基础资料、启用/禁用、重置密码。</p>
+            <div class="card">
+                <div class="card-body">
+                    <p id="userDetailError" class="text-danger small" style="display:none;"></p>
+                    <form id="userDetailForm">
+                        <input type="hidden" id="userId" value="">
+                        <div class="mb-3"><label class="form-label">用户ID</label><input type="text" class="form-control" id="userIdReadonly" readonly/></div>
+                        <div class="mb-3"><label class="form-label">昵称</label><input type="text" class="form-control" id="userNickname" name="nickname"/></div>
+                        <div class="mb-3"><label class="form-label">手机号</label><input type="text" class="form-control" id="userMobile" name="mobile"/></div>
+                        <div class="mb-3"><label class="form-label">邮箱</label><input type="text" class="form-control" id="userEmail" name="email"/></div>
+                        <div class="mb-3"><label class="form-label">状态</label><select class="form-select" id="userStatus" name="status"><option value="1">启用</option><option value="0">禁用</option></select></div>
+                        <button type="submit" class="btn btn-primary">保存修改</button>
+                        <button type="button" class="btn btn-warning" id="btnResetPwd">重置密码</button>
+                        <a href="/user/list" class="btn btn-secondary">返回列表</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{layout/footer :: footer}"></div>
+<script th:src="@{/js/request.js}"></script>
+<script th:src="@{/js/user-detail.js}"></script>
+</body>
+</html>

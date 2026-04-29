@@ -1,0 +1,5 @@
+com\example\vote\admin\config\SecurityConfig.class
+com\example\vote\admin\controller\PageController.class
+com\example\vote\admin\config\ThymeleafConfig$1.class
+com\example\vote\admin\config\ThymeleafConfig.class
+com\example\vote\admin\VoteAdminApplication.class

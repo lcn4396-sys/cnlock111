@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="sidebar" class="col-md-2 d-md-block bg-light sidebar border-end min-vh-100">
+    <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="/vote/list">投票管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="/category/list">分类管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/list">用户管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="/comment/list">评论管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="/report/list">举报投诉</a></li>
+            <li class="nav-item"><a class="nav-link" href="/system/profile">个人设置</a></li>
+            <li class="nav-item"><a class="nav-link" href="/system/role">角色权限</a></li>
+            <li class="nav-item"><a class="nav-link" href="/system/setting">平台设置</a></li>
+            <li class="nav-item"><a class="nav-link" href="/log/operate">操作日志</a></li>
+            <li class="nav-item"><a class="nav-link" href="/log/statistics">数据统计</a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
